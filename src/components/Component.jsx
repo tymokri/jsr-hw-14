@@ -12,7 +12,7 @@ class Component extends React.Component {
         }
     }
 
-    toggle = (e) => {
+    handleClose = (e) => {
         e.preventDefault();
         this.setState({
             modal: !this.state.modal,
@@ -22,7 +22,7 @@ class Component extends React.Component {
         });
     }
 
-    handleClose = () => {
+    handleCancel = () => {
         this.setState({
             display: 'none',
             fade: false,
@@ -31,19 +31,18 @@ class Component extends React.Component {
     }
 
     render() {
-        const display = this.state.display;
-        const modalClassNames = this.state;
+        const infoFromState = this.state;
 
         return (
             <div>
-                <button type="button" className="modal-open-button btn btn-danger" onClick={this.toggle}>Open</button>
-                <Modal isOpen={this.state.modal} display={display} modalClassNames={modalClassNames}>
-                    <Modal.Header toggle={this.handleClose}>Modal title</Modal.Header>
+                <button type="button" className="modal-open-button btn btn-danger" onClick={this.handleClose}>Open</button>
+                <Modal isOpen={this.state.modal} infoFromState={infoFromState}>
+                    <Modal.Header toClose={this.handleCancel}>Modal title</Modal.Header>
                     <Modal.Body>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit
                     </Modal.Body>
                     <Modal.Footer>
-                        <button type="button" className="modal-close-button btn btn-secondary" onClick={this.handleClose}>Cancel</button>
+                        <button type="button" className="modal-close-button btn btn-secondary" onClick={this.handleCancel}>Cancel</button>
                     </Modal.Footer>
                 </Modal>
             </div>

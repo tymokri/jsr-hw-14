@@ -7,21 +7,18 @@ import Footer from "./Footer";
 
 
 class Modal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
 
     render() {
-        const { modalClassNames } = this.props;
+        const { infoFromState } = this.props;
+
+        const classNames = cn("modal",{
+            fade: infoFromState.fade,
+            show: infoFromState.show
+        });
 
         return (
-            <div className={cn("modal",{
-                    fade: modalClassNames.fade,
-                    show: modalClassNames.show
-                    })}
-                    style={this.props}
+            <div className={classNames}
+                    style={{display: infoFromState.display}}
                     role="dialog">
 
                 <div className="modal-dialog">
